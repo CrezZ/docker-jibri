@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jibri:
+    image: jibri2
+    restart: always
+    environment:
+      - JIBRI_AUTH=123123123123
+      - JIBRI_SECRET=123123123123
+      - PROSODY_HOST=mcu.myserver.ru
+      - JIBRI_DOMAIN=mcu.myserver.ru
+      - RECORD_PATH=/tmp/record
+    volumes:
+      - /tmp:/tmp/record
+      - /dev/shm:/dev/shm
+    cap_add:
+       - SYS_ADMIN
+       - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
